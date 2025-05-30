@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About NKB Packaging Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 100%;
+    }
+
+    @media (max-width: 480px) {
+      html {
+        font-size: 90%;
+      }
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+        url('newbg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: flex-end;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+    }
+
+    .company-info {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 0.75rem;
+      margin-right: auto;
+    }
+
+    .logo {
+      height: 60px;
+      margin-right: 12px;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-items a,
+    .dropdown-btn {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .nav-items a i {
+      margin-right: 8px;
+    }
+
+    .nav-items a:hover,
+    .dropdown-btn:hover {
+      color: #ffd700;
+      transform: scale(1.05);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-btn::after {
+      content: " ▾";
+      font-size: 0.8em;
+      margin-left: 4px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      min-width: 230px;
+      z-index: 100;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #333;
+      color: #ffd700;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        justify-content: space-between;
+        padding: 10px 20px;
+      }
+
+      .company-info {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+
+      .nav-items {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.95);
+        border-radius: 8px;
+        padding: 15px 10px;
+        gap: 15px;
+        width: 90%;
+        max-width: 300px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-items.show {
+        display: flex;
+      }
+
+      .dropdown-content {
+        position: static;
+        display: none;
+        background: none;
+        box-shadow: none;
+        padding-left: 15px;
+        transition: max-height 0.3s ease;
+        overflow: hidden;
+        max-height: 0;
+      }
+
+      .dropdown.open .dropdown-content {
+        display: block;
+        max-height: 500px;
+      }
+
+      .dropdown-btn::after {
+        content: " ▸";
+        float: right;
+      }
+
+      .dropdown.open .dropdown-btn::after {
+        content: " ▾";
+      }
+
+      .dropdown-content a {
+        padding: 8px 10px;
+        color: #ddd;
+        background-color: transparent;
+        border-radius: 4px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        cursor: pointer;
+      }
+
+      .dropdown-content a:hover {
+        color: #ffd700;
+        background-color: #1a1a1a;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: none;
+      }
+
+      .about-container {
+        padding: 20px;
+        font-size: 0.95rem;
+      }
+
+      .about-container h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    main {
+      padding: 100px 30px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 900px;
+    }
+
+    .about-container h1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+
+    .about-container p {
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.85);
+      text-align: center;
+      padding: 20px 10px;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="company-info">
+    <img src="LOGO.jpg.png" alt="Logo" class="logo" />
+    <div>
+      <div><strong>NKB Packaging Solutions</strong></div>
+      <div>Anand Industrial Estate, Mohan Nagar, Ghaziabad, UP-201007</div>
+    </div>
+  </div>
+  <div class="nav-items">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="aboutus.html"><i class="fas fa-info-circle"></i> About us</a>
+    <div class="dropdown">
+      <span class="dropdown-btn"><i class="fas fa-box"></i> Our Products</span>
+      <div class="dropdown-content">
+        <a href="bopp1.html">Transparent Bopp self-adhesive tape</a>
+        <a href="brown.html">Brown Bopp self-adhesive tape</a>
+        <a href="color.html">Color Bopp self-adhesive tape</a>
+        <a href="masking.html">Masking tape</a>
+        <a href="stretch.html">Stretch Film</a>
+        <a href="bubble.html">Bubble roll</a>
+        <a href="esd.html">ESD Bubble pouches</a>
+        <a href="foam.html">EPE Foam roll</a>
+        <a href="bio.html">Biodegradable bags</a>
+      </div>
+    </div>
+    <a href="#"><i class="fas fa-envelope"></i> Contact us</a>
+  </div>
+  <div class="hamburger"><i class="fas fa-bars"></i></div>
+</nav>
+
+<!-- Main content -->
+<main>
+  <div class="about-container">
+    <h1>About NKB Packaging Solutions</h1>
+    <p>Welcome to NKB Packaging Solutions – your trusted partner in high-quality packaging materials. Located in the heart of Ghaziabad, Uttar Pradesh, our company has been serving the packaging industry with dedication, innovation, and excellence.</p>
+    <p>With years of experience and a commitment to customer satisfaction, we offer a diverse range of packaging products including self-adhesive tapes, bubble wraps, stretch films, and more. Our products are designed to meet the dynamic needs of industries ranging from manufacturing and logistics to retail and electronics.</p>
+    <p>At NKB Packaging Solutions, we believe in building long-term relationships with our clients by providing consistent quality, competitive pricing, and timely delivery. Whether you're a small business or a large corporation, we have the right packaging solutions tailored for your needs.</p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 NKB Packaging Solutions. All rights reserved.
+</footer>
+
+<!-- JS -->
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navItems = document.querySelector('.nav-items');
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  hamburger.addEventListener('click', () => {
+    navItems.classList.toggle('show');
+  });
+
+  dropdowns.forEach(dropdown => {
+    const btn = dropdown.querySelector('.dropdown-btn');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navItems.contains(e.target) && !hamburger.contains(e.target)) {
+      navItems.classList.remove('show');
+      dropdowns.forEach(dropdown => dropdown.classList.remove('open'));
+    }
+  });
+</script>
+
+</body>
+</html>
