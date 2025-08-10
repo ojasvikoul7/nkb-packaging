@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: url('contactus.jpg')no-repeat center center fixed;
+        background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.nav-items {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-items a, .dropdown > a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-items a i, .dropdown > a i {
+  margin-right: 8px;
+  color: white;
+}
+
+.nav-items a:hover, .dropdown:hover > a {
+  color: #ffd700;
+  transform: scale(1.05);
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 220px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 20;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #333;
+  color: #ffd700;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.nav-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company-info {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.logo {
+  height: 60px;
+  margin-right: 12px;
+}
+
+.company-text {
+  line-height: 2;
+   font-size: 0.87rem;
+}
+
+
+    /* Banner only */
+    .banner {
+      position: relative;
+      height: 250px;
+      margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .banner::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 250px;
+      background: url('img2.jpg') no-repeat center;
+      background-size: cover;
+      pointer-events: none;
+    }
+
+    .banner::before {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 1, 36, 0.664);
+    z-index: 1;
+    }
+
+    .banner h1 {
+      font-size: 2.9rem;
+      color: #66fcf1;
+      z-index: 2;
+    }
+
+    .banner p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Background for content below banner */
+    .main-content {
+      background-size: cover;
+      padding: 60px 20px 20px;
+    }
+
+    .contact-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1100px;
+      width: 100%;
+      margin: auto;
+    }
+
+    .info-box, .form-box {
+      flex: 1 1 48%;
+      min-width: 300px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .info-box p a{
+        display:inline-block;
+        word-break: break-word;
+        white-space: nowrap;
+    }
+
+    .info-box:hover, .form-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+    }
+
+    .info-box h2, .form-box h2 {
+      margin-bottom: 20px;
+      color: #66fcf1;
+    }
+
+    .info-box p {
+      margin: 15px 0;
+      font-size: 16px;
+      color: #ddd;
+    }
+
+    .info-box i {
+      color: #66fcf1;
+      margin-right: 10px;
+    }
+
+    .form-box form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .form-box input,
+    .form-box textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.07);
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .form-box label {
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      padding: 0 5px;
+      color: #bbb;
+      pointer-events: none;
+      transition: 0.2s ease;
+      background: transparent;
+    }
+
+    .form-box input:focus + label,
+    .form-box textarea:focus + label,
+    .form-box input:not(:placeholder-shown) + label,
+    .form-box textarea:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 12px;
+      background: rgba(15,32,39,0.8);
+      font-size: 13px;
+      color: #66fcf1;
+    }
+
+    .form-box button {
+      padding: 14px;
+      border: none;
+      background-color: #66fcf1;
+      color: #0b0c10;
+      font-weight: bold;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-box button:hover {
+      background-color: #45a29e;
+    }
+
+    .map {
+      padding: 40px;
+      padding-top: 20px;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 340px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+.contact-link {
+  font-size: 18px;
+  color: #ddd;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-link:hover {
+  color: #66fcf1;
+  font-weight: bold;
+  text-shadow: 0 0 10px #66fcf1, 0 0 20px #66fcf1;
+  transform: scale(1.05);
+}
+     
+
+    @media (max-width: 768px) {
+      .contact-box {
+        flex-direction: column;
+      }
+    }
+    /* Footer */
+.footer {
+  background-color: #000000;
+  color: #ddd;
+  padding: 40px 20px;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 60px;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-column h4 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.footer-column a {
+  display: inline-block;
+  color: #ddd;
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #ffd700;
+}
+
+.footer-column p {
+  margin-bottom: 8px;
+}
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-wrapper">
+    <div class="company-info">
+      <img src="LOGO.jpg.png" alt="Logo" class="logo">
+      <div class="company-text">
+        <div class="company-name">NKB Packaging Solutions</div>
+        <div class="company-address">Anand Industrial Estate, Mohan Nagar, Ghaziabad, UP-201007</div>
+      </div>
+    </div>
+
+    <div class="nav-items">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="aboutus.html"><i class="fas fa-info-circle"></i> About us</a>
+      <div class="dropdown">
+        <a href="#"><i class="fas fa-box"></i> Our Products <i class="fas fa-caret-down" style="margin-left:5px;"></i></a>
+        <div class="dropdown-content">
+          <a href="bopp1.html">Transparent Bopp self-adhesive tape</a>
+          <a href="brown.html">Brown Bopp self-adhesive tape</a>
+          <a href="color.html">Color Bopp self-adhesive tape</a>
+          <a href="masking.html">Masking tape</a>
+          <a href="stretch.html">Stretch Film</a>
+          <a href="bubble.html">Bubble roll</a>
+          <a href="esd.html">ESD Bubble pouches</a>
+          <a href="foam.html">EPE Foam roll</a>
+          <a href="bio.html">Biodegradable bags</a>
+        </div>
+      </div>
+      <a href="#"><i class="fas fa-envelope"></i> Contact us</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Banner -->
+  <section class="banner">
+    <h1>Get in Touch</h1>
+    <p>We’d love to hear from you. Here’s how you can reach us.</p>
+  </section>
+
+  <!-- Contact Section with Background -->
+  <div class="main-content">
+    <section class="contact-section">
+        <div class="contact-box">
+       <div class="info-box">
+  <h2><i class="fas fa-address-book"></i> Contact Us</h2>
+
+  <p>
+    <a href="mailto:youremail@example.com" class="contact-link" target="_blank">
+      <i class="fas fa-envelope" style="color: #EA4335;"></i>
+      youremail@example.com
+    </a>
+  </p>
+
+  <p>
+    <a href="tel:+919876543210" class="contact-link">
+      <i class="fas fa-phone-alt" style="color: #34A853;"></i>
+      +91 9876543210
+    </a>
+  </p>
+
+  <p>
+    <a href="https://wa.me/919876543210" class="contact-link" target="_blank">
+      <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+      Chat on WhatsApp
+    </a>
+  </p>
+
+  <p>
+    <a href="https://www.google.com/maps?q=Your+City,+Country" class="contact-link" target="_blank">
+      <i class="fas fa-map-marker-alt" style="color: #4285F4;"></i>
+      Your City, Country
+    </a>
+  </p>
+</div>
+
+        <!-- Form Box -->
+        <div class="form-box">
+          <h2>Send a Message</h2>
+          <form action="https://formspree.io/f/xblovklr" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" required placeholder=" " />
+              <label>Your Name</label>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" required placeholder=" " />
+              <label>Your Email</label>
+            </div>
+            <div class="form-group">
+              <textarea name="message" required rows="5" placeholder=" "></textarea>
+              <label>Your Message</label>
+            </div>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Map -->
+    <section class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.102939473961!2d-122.41941538467892!3d37.77492927975821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e2f2f4f9e13%3A0x9f3cbf882ceaa65e!2sSan+Francisco!5e0!3m2!1sen!2sus!4v1614086591534!5m2!1sen!2sus"
+        allowfullscreen loading="lazy">
+      </iframe>
+    </section>
+  </div>
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Contact Us</h4>
+      <p>Email: rajankoul@nkbpackaging.com</p>
+      <p>Phone: +91 9971282775, +91 9560058646</p>
+      <p>Address: Plot no-2, Anand Industrial Estate, Arthala, Mohan Nagar, Ghaziabad, Uttar Pradesh, India 201007</p>
+    </div>
+    <div class="footer-column">
+      <h4>Our Products</h4>
+      <a href="bopp1.html">Transparent Bopp self-adhesive tape</a><br/>
+  <a href="brown.html">Brown Bopp self-adhesive tape</a><br/>
+  <a href="color.html">Color Bopp self-adhesive tape</a><br/>
+  <a href="masking.html">Masking tape</a><br/>
+  <a href="stretch.html">Stretch Film</a><br/>
+  <a href="bubble.html">Bubble roll</a><br/>
+  <a href="esd.html">ESD Bubble pouches</a><br/>
+  <a href="foam.html">EPE Foam roll</a><br/>
+  <a href="bio.html">Biodegradable bags</a>
+  <a href="silver.html">ESD Silver Zip Pouches</a>
+  <a href="ldpe.html">LDPE Films</a>
+  <a href="bag.html">LDPE Bags</a>
+    </div>
+    <div class="footer-column">
+      <h4>About Us</h4>
+      <p>NKB Packaging Solutions is dedicated to providing premium packaging materials with unmatched quality and service.</p>
+      <p>We combine experience and innovation to meet your packaging needs.</p>
+    </div>
+  </div>
+
+</body>
+</html>
